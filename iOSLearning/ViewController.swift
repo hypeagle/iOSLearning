@@ -53,7 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let geo = CLGeocoder()
             geo.reverseGeocodeLocation(location) { (placeMarks, error) in
                 if let placeMark = placeMarks?.first {
-                    let str: String = "当前国家：\(placeMark.country ?? "")\n当前城市：\(placeMark.locality ?? "")\n当前位置：\(placeMark.subLocality ?? "")\n当前街道：\(placeMark.thoroughfare ?? "")\n具体位置：\(placeMark.name ?? "")"
+                    let str: String = "当前国家：\(placeMark.country ?? "")\n当前城市：\(placeMark.locality ?? (placeMark.administrativeArea ?? ""))\n当前位置：\(placeMark.subLocality ?? "")\n当前街道：\(placeMark.thoroughfare ?? "")\n具体位置：\(placeMark.name ?? "")"
                     print(str)
                     let alter = UIAlertController(title: "定位成功", message: str, preferredStyle: UIAlertControllerStyle.alert)
                     let ok = UIAlertAction(title: "确定", style: UIAlertActionStyle.cancel, handler: nil)
